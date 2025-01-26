@@ -22,7 +22,7 @@
         }
 
         val palabras = mutableSetOf<Palabra>() // Usamos un conjunto para evitar repeticiones
-        val url = "https://random-word-api.herokuapp.com/word?number=${cantidad * 10}&lang=${idioma.codigo}"
+        val url = "https://random-word-api.herokuapp.com/word?number=${cantidad * 5}&lang=${idioma.codigo}"
 
         val patron = if (idioma == Idioma.ES) {
             "^[a-záéíóúüñ]+$"
@@ -52,7 +52,7 @@
         }
 
         client.close()
-        return palabras
+        return palabras.take(cantidad).toMutableSet()
     }
     ```
 
